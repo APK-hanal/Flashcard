@@ -16,21 +16,26 @@ class Deck:
                 due_cards.append(card)
         return due_cards
     
-if __name__ == "__main__":
-    deck = Deck("Python Basics")
-    
-    # Add some cards
-    card1 = Card("What is Python?", "A language")
-    card2 = Card("What is a list?", "Mutable sequence")
-    
-    # Make card2 not due yet (future review)
-    card2.next_review = datetime.now() + timedelta(days=5)
-    
-    deck.add_card(card1)
-    deck.add_card(card2)
-    
-    print(f"Total cards: {len(deck.cards)}")
-    print(f"Due cards: {len(deck.get_due_Cards())}")
+    def to_dict(self):
+        #deck ----> dict
+        card_dict= []
+        for cards in self.cards:
+            
+            card_dict.append(cards.to_dict())
+            
+        return {'name':self.name,
+                'cards': card_dict
+                }
+    @staticmethod
+    def from_dict(data):
+        deck = Deck(data['name'])
+        card_obj = []
+        for card_dict in data['cards']:
+            card_obj.append(Card.from_dict(card_dict))
+        deck.cards = card_obj
+        return deck
+            
+        
         
             
             
