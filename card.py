@@ -27,18 +27,12 @@ class Card:
             self.interval = 7
             self.next_review = datetime.now() + timedelta(days=7)
             self.repetitions +=1 
-        
             
-        
-if __name__ == "__main__":
-    card = Card("What is Python?", "A programming language")
-    print(f"Initial next review: {card.next_review}")
-    print(f"Initial repetitions: {card.repetitions}")
-    
-    # Mark as easy
-    card.update_schedule(3)
-    
-    print(f"\nAfter marking EASY:")
-    print(f"Next review: {card.next_review}")
-    print(f"Interval: {card.interval} days")
-    print(f"Repetitions: {card.repetitions}")
+    def to_dict(self):
+        #converts the card with all of the values as keys
+        return {'front' : self.front,
+                'back':self.back,
+                'next_review' : self.next_review,
+                'interval' : self.interval,
+                'repetitions' : self.repetitions
+                }
