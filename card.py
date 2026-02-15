@@ -36,3 +36,11 @@ class Card:
                 'interval' : self.interval,
                 'repetitions' : self.repetitions
                 }
+        
+    @staticmethod
+    def from_dict(data):
+        card = Card(data['front'], data['back'])
+        card.next_review = datetime.fromisoformat(data['next_review'])
+        card.interval = data['interval']
+        card.repetitions = data['repetitions']
+        return card
