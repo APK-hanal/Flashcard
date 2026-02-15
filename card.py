@@ -19,11 +19,11 @@ class Card:
             self.interval = 1
             self.next_review = datetime.now() + timedelta(days=1)
             self.repetitions +=1
-        if difficulty == 2:
+        elif difficulty == 2:
             self.interval = 3
             self.next_review = datetime.now() + timedelta(days=3)
             self.repetitions += 1
-        if difficulty ==3:
+        else:
             self.interval = 7
             self.next_review = datetime.now() + timedelta(days=7)
             self.repetitions +=1 
