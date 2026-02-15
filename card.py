@@ -32,7 +32,7 @@ class Card:
         #converts the card with all of the values as keys
         return {'front' : self.front,
                 'back':self.back,
-                'next_review' : self.next_review,
+                'next_review' : self.next_review.isoformat(),
                 'interval' : self.interval,
                 'repetitions' : self.repetitions
                 }
